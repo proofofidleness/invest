@@ -65,13 +65,6 @@ contract Invest {
         Divested(a, x);
     }
     
-    // computes the next loss of an address
-    function losingAmount(address a) constant returns (uint tolose) {
-        // ensures 0 <= tolose <= balance[a]
-        
-        return (balanceOf[a] * (invested - balanceOf[a])) / 10 / invested;
-    }
-    
     // creates a new reward that can be claimed by other users
     function createReward(uint x, uint oldTotal) private {
         Reward memory r = Reward(x, now, oldTotal);
@@ -91,13 +84,15 @@ contract Invest {
             pendingRewards[i] = pendingRewards[countRewards - 1];
             delete pendingRewards[countRewards - 1];
         }
+        
+        countRewards = countRewards - 1;
     }
     
     
     
     /** Public functions */
     
-    // function called when the user pings
+    // to be called every day
     function idle() {
         lastPing[msg.sender] = now;
         Pinged(msg.sender, now);
@@ -132,7 +127,6 @@ contract Invest {
         
         pendingRewards[i].claimed[msg.sender] = true;
         uint v = pendingRewards[i].value * balanceOf[msg.sender] / pendingRewards[i].oldTotal;
-        pendingRewards[i].value = pendingRewards[i].value - v;
         sideBalanceOf[msg.sender] = sideBalanceOf[msg.sender] + v;
     }
     
@@ -155,7 +149,15 @@ contract Invest {
         sideBalanceOf[msg.sender] = sideBalanceOf[msg.sender] + v;
     }
     
-    // used to take create a reward from the funds of someone not idling
+    // computes the next loss of an address
+    function losingAmount(address a) constant returns (uint tolose) {
+        // ensures 0 <= tolose <= balance[a]
+        
+        return balanceOf[a] / 10;
+    }
+    
+    // used to take create a reward from the funds of someone who has not
+    // idled in the last 27 hours
     function poke(address a) {
       require(now > lastPing[a] + 27 hours);
       
