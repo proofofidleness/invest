@@ -10,4 +10,4 @@ The player who lost is also automatically credited his share of his own lost 10%
 
 ## Deployed Contract
 
-The contract is deployed on the Ropsten (Revival) testnet at address []()
+The contract is deployed on the Ropsten (Revival) testnet at 0x9a7e4083b7675376124884e91e63d1d36cbda8ba
