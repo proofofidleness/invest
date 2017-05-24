@@ -10,9 +10,13 @@ function Player(props) {
             poker: props.currentAddress,
             pokee: props.address
         });
+    const trStyle = {
+        lineHeight: "27px",
+        backgroundColor: color2(timeLeft)
+    }
         
     return  e('tr',
-                {key: props.address, style: {backgroundColor: color2(timeLeft)}},
+                {key: props.address, style: trStyle },
                 e('td',{ style: { paddingRight: "10px", paddingLeft: "10px" }},props.address),
                 e('td',{ style: { paddingRight: "10px", paddingLeft: "10px" }},props.balance.toString(10)),
 //                 e('td',{ style: { paddingRight: "10px", paddingLeft: "10px" }},props.lastRewards.div(largeConstant).toString(10)),
@@ -38,17 +42,32 @@ function Players(props) {
     const addresses = Object.keys(props.players);
     const ps = props.players;
     const s = sum(addresses.map(address => inst.getReward(address)))
+    const tableStyle = {
+        marginTop: "10px",
+        fontSize: tableSize
+    }
+    const trStyle = {
+        fontWeight: "bold",
+        paddingTop: "5px",
+        paddingBottom: "5px",
+        borderRadius: "10px 10px 10px 10px"
+    }
+    const tdStyle = {
+        style: {
+            paddingRight: "5px",
+            paddingLeft: "5px"
+        }
+    }
+    
     
     if (addresses.length > 0) 
-        return  e('div', {id: 'players', style: { marginTop: "10px" }}, 
+        return  e('div', {id: 'players', style: tableStyle }, 
                     ee('table',
                         ee('thead',
                             ee('tr',
-                                ee('td', 'Address'),
-                                ee('td','Balance (eth)'),
-//                                 ee('td','LastRewards'),
-//                                 ee('td','getReward'),
-                                ee('td','Poke')
+                                e('td', tdStyle, 'Address'),
+                                e('td', tdStyle, 'Balance (eth)'),
+                                e('td', tdStyle, 'Poke')
                             )
                         ),
                         ee('tbody',addresses.map(address => 
@@ -60,7 +79,7 @@ function Players(props) {
                                 lastPing: ps[address].lastPing
                             })
                         ),
-                            e('tr',{ style: { fontWeight: "bold" }},
+                            e('tr',{ style: trStyle },
                                 ee('td', 'Total'),
                                 ee('td', toETH(props.invested).toString(10)),
 //                                 ee('td', props.cumulativeRatios.div(largeConstant).toString(10)),

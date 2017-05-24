@@ -2,14 +2,17 @@ function PlayerInformation(props) {
     const a = props.currentAddress;
     const p = props.currentPlayer;
     const owed = ((props.cumulativeRatios - p.lastRewards) * p.balance) / largeConstant
+    const inputStyle = {
+        width: "450px",
+        fontSize: "18px"
+    }
+    
     
     return  e('div', {id: 'currentPlayer'},
                 "Enter your address: ",
-                e('input', {id: 'currentAddress', defaultValue: "0x0", type: "text", style: { width: 300 }}),
-                e('p', null, "Balance: " + p.balance + " ETH"),
-                InvestButton({address: a}),
-                DivestButton({address: a}),
-                IdleButton({address: a}),
+                e('input', {id: 'currentAddress', defaultValue: "0x0", type: "text", style: inputStyle }),
+                IdleButton({ address: a}),
+                InvestButtons({address: a, balance: p.balance }),
                 ClaimRewards({owed: owed, address: a})
             );     
 }

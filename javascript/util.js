@@ -1,5 +1,8 @@
 var inst;
-const timeout = 600;
+const timeout = 1800;
+
+const headerSize = "20px";
+const tableSize = "16px";
 
 const largeConstant = new BigNumber("1000000000000000000000000")
 
@@ -31,9 +34,9 @@ function interpolate(v, rgb1, rgb2) {
 }
 
 function color2(secondsAgo) {
-    var red = [255,60,60]
-    var green = [60,255,60]
-    var yellow = [255,255,0]
+    var red = [255,125,125]
+    var green = [125,255,125]
+    var yellow = [255,255,125]
     var p = secondsAgo / timeout;
     
     p = Math.max(0,p)

@@ -58,7 +58,11 @@ function refresh() {
 
 
 function Game(props) {
-    return  e('div',null,
+    const gameStyle = {
+        fontSize: headerSize
+    }
+    
+    return  e('div', { style: gameStyle },
                 ErrorReport({ errors: props.errors }),
                 PlayerInformation({ cumulativeRatios: props.cumulativeRatios, currentPlayer: props.currentPlayer, currentAddress: props.currentAddress }),
                 Players({ invested: props.contractInfo.invested, cumulativeRatios: props.contractInfo.cumulativeRatios, currentAddress: props.currentAddress, players: props.players }),
