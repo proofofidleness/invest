@@ -2,7 +2,7 @@
 
 ## Description
 
-After investing, you must click the Idle button every day. If you don't, you will lose 10%
+After investing, you must click the Idle button every 14 hours. If you don't, you will lose 10%
 of your funds, which will be redistributed to all investors, proportionnally to their investments.
 
 ## Contract Functions
