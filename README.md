@@ -8,10 +8,10 @@ of your funds, which will be redistributed to all investors, proportionnally to 
 ## Contract Functions
 
 * `invest` and `divest` enable you to add money to the contract or withdraw,
-* you must call `idle` before timing out (14 hours)
-* you can call `poke` on someone if they do not idle on time: this takes (at most) 10% of their balance, and other players are then allowed to claim their fair share of this balance.
-The player who lost is also automatically credited his share of his own lost 10%. This is done so that the game is completely fair, regardless of whether you invest small or big.
-* a Claim button that appears if you have pending rewards to claim (`claimReward` function)
+* you must call `idle` before timing out (14 hours),
+* you can call `poke` on someone if they do not idle on time: this takes (at most) 10% of their balance, and other players are then allowed to claim their fair share of this balance
+(the player who lost is also automatically credited his share of his own lost 10%. This is done so that the game is completely fair, regardless of whether you invest small or big),
+* `claimReward` allows you to collect all pending rewards.
 
 ## Deployed Contract
 
