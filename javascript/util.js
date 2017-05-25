@@ -1,10 +1,12 @@
 var inst;
-const timeout = 1800;
+const timeout = 14*60*60;
 
 const headerSize = "20px";
 const tableSize = "16px";
 
 const largeConstant = new BigNumber("1000000000000000000000000")
+
+var gasPrice = 20000000000;
 
 const players = {};
 const rewards = {};

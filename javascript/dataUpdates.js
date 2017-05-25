@@ -63,10 +63,10 @@ function Game(props) {
     }
     
     return  e('div', { style: gameStyle },
-                ErrorReport({ errors: props.errors }),
                 PlayerInformation({ cumulativeRatios: props.cumulativeRatios, currentPlayer: props.currentPlayer, currentAddress: props.currentAddress }),
                 Players({ invested: props.contractInfo.invested, cumulativeRatios: props.contractInfo.cumulativeRatios, currentAddress: props.currentAddress, players: props.players }),
-                Transactions({ transactions: props.transactions })
+                Transactions({ transactions: props.transactions }),
+                ErrorReport({ errors: props.errors })
             );
 }
 

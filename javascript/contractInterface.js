@@ -22,7 +22,7 @@ function reporting(desc,err,txid) {
 function idle(address) {
     const desc = "idle() from " + address
     
-    inst.idle.sendTransaction({from: address, gas: 300000}, function(error,txid) {
+    inst.idle.sendTransaction({from: address, gas: 300000, gasPrice: gasPrice}, function(error,txid) {
         reporting(desc,error,txid)
     })
 }
@@ -31,7 +31,7 @@ function idle(address) {
 function invest(address,amount) {
     const desc = "invest(" + amount + ") from " + address
     
-    inst.invest.sendTransaction({from: address, value: amount, gas: 300000}, function(error,txid) {
+    inst.invest.sendTransaction({from: address, value: amount, gas: 300000, gasPrice: gasPrice}, function(error,txid) {
         reporting(desc,error,txid)
     })
 }
@@ -39,7 +39,7 @@ function invest(address,amount) {
 function divest(address,amount) {
     const desc = "divest(" + amount + ") from " + address
     
-    inst.divest.sendTransaction(amount, {from: address, gas: 300000}, function(error,txid) {
+    inst.divest.sendTransaction(amount, {from: address, gas: 300000, gasPrice: gasPrice}, function(error,txid) {
         reporting(desc,error,txid)
     })
 }
@@ -47,7 +47,7 @@ function divest(address,amount) {
 function poke(poker, pokee) {
     const desc = "poke(" + pokee + ") from " + poker
     
-    inst.poke.sendTransaction(pokee, {from: poker, gas: 300000}, function(error,txid) {
+    inst.poke.sendTransaction(pokee, {from: poker, gas: 300000, gasPrice: gasPrice}, function(error,txid) {
         reporting(desc,error,txid)
     })
 }
@@ -55,7 +55,7 @@ function poke(poker, pokee) {
 function claimRewards(address) {
     const desc = "claimRewards() from " + address
 
-    inst.claimRewards.sendTransaction({from: address, gas: 300000}, function(error,txid) {
+    inst.claimRewards.sendTransaction({from: address, gas: 300000, gasPrice: gasPrice}, function(error,txid) {
         reporting(desc,error,txid)
     })
 }

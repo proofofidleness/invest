@@ -1,3 +1,17 @@
+function secondsToHours(total) {
+    const hours = Math.floor(total / 3600)
+    const r1 = total % 3600
+    const minutes = Math.floor(r1 / 60)
+    const seconds = r1 % 60
+    
+    if (hours > 0)
+        return hours + "h" + minutes + "m" + seconds + "s";
+    else if (minutes > 0)
+        return minutes + "m" + seconds + "s";
+    else
+        return seconds + "s";
+}
+
 function Player(props) {
     const now = new Date().getTime() / 1000;
     const lp = props.lastPing ? props.lastPing.toNumber() : 0;
@@ -5,7 +19,7 @@ function Player(props) {
     
     const timeLeft = lp + timeout - now;
     const pokeButton = timeLeft >= 0 ? 
-        "in " + timeLeft.toFixed(0) + "s" : 
+        "in " + secondsToHours(timeLeft.toFixed(0)) : 
         Poke({
             poker: props.currentAddress,
             pokee: props.address

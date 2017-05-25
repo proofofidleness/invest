@@ -79,8 +79,36 @@ function InvestButtons(props) {
                         toWei(document.getElementById('invest').value)
                     ),
                     style: divestButtonStyle 
-                }, 'Divest')
+                }, 'Divest')/*,
+                GasPricePickers()*/
     );
+}
+
+function GasPricePickers(props) {
+    return e('div', { style: { marginLeft: '10px', marginTop: '20px' }}, 
+        ee('span', "Gas Price: "),
+        GasPricePicker( { price: "1", default: false }),
+        GasPricePicker( { price: "8", default: false }),
+        GasPricePicker( { price: "20", default: true })
+    )
+}
+
+function GasPricePicker(props) {
+    return ee('label', 
+        e('input', { 
+            type: "radio", 
+            name: "gasprice", 
+            value: props.price,
+            defaultChecked: props.default,
+            onClick: () => { 
+                gasPrice = web3.toWei(props.price, "gwei")
+                if (props.price < 20) {
+                    alert("Caution: decreasing the gas price will make your transactions take longer to confirm.")
+                }
+            }
+        }), 
+        props.price + " gwei"
+    )
 }
 
 function IdleButton(props) {
