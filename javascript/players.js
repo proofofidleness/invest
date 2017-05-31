@@ -55,7 +55,7 @@ function Players(props) {
     
     const addresses = Object.keys(props.players);
     const ps = props.players;
-    const s = sum(addresses.map(address => inst.getReward(address)))
+//    const s = sum(addresses.map(address => inst.getReward(address)))
     const tableStyle = {
         marginTop: "10px",
         fontSize: tableSize
